@@ -24,12 +24,12 @@ end
 Facility.create(facility_type_id: 3, number: 1)
 #
 # d = DateTime.new(2017,3,10,4,0,0)
-Booking.create(facility_id: 1, user_id: 1, date: "2017-04-18",  start_time: "20:00:00")
+Booking.create(facility_type_id: 1, facility_id: 1, user_id: 1, date: "2017-04-18",  start_time: "20:00:00")
 
-Booking.create(facility_id: 1, user_id: 2, date: Date.new(2017, 3, 11),  start_time: "19:00:00")
+Booking.create(facility_type_id: 1, facility_id: 1, user_id: 2, date: Date.new(2017, 3, 11),  start_time: "19:00:00")
 
-Booking.create(facility_id: 1, user_id: 3, date: Date.new(2017, 3, 13),  start_time: "16:00:00")
+Booking.create(facility_type_id: 1, facility_id: 1, user_id: 3, date: Date.new(2017, 3, 13),  start_time: "16:00:00")
 
-Booking.create(facility_id: 2, user_id: 1, date: Date.new(2017, 3, 11),  start_time: "07:00:00")
+Booking.create(facility_type_id: 1, facility_id: 2, user_id: 1, date: Date.new(2017, 3, 11),  start_time: "07:00:00")
 
-Booking.create(facility_id: 3, user_id: 3, date: Date.new(2017, 3, 12),  start_time: "16:00:00")
+Booking.create(facility_type_id: 1, facility_id: 3, user_id: 3, date: Date.new(2017, 3, 12),  start_time: "16:00:00")

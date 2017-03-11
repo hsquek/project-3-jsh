@@ -1,2 +1,13 @@
 <h1>Bookings#index</h1>
 <p>Find me in app/views/bookings/index.html.erb</p>
+
+<% @facility_types.each do |type| %>
+  <pre>
+    <%= type.inspect %>
+    <%= link_to type.name, new_booking_path(@booking, :facility_type_id => type.id), remote: true %>
+  </pre>
+<% end %>
+
+<%= link_to 'Test', new_booking_path, remote: true %>
+
+<div id="booking-form" style="width:640px;height:480px;border:1px solid black"></div>

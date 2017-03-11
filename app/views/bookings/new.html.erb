@@ -1,2 +1,21 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<!-- <h1>Bookings#new</h1>
+<p>Find me in app/views/bookings/new.html.erb</p> -->
+
+<%= form_for @booking do |f| %>
+<div class="row">
+  <% @facility_types.each do |type| %>
+  <%= radio_button_tag(:facility_type_id, type.id) %>
+  <%= label_tag(:facility_type_id_facility_type, type.name) %>
+  <% end %>
+</div>
+
+<div class="row">
+  <% @facilities.each do |fac| %>
+  <%= radio_button_tag(:facility_id, fac.id) %>
+  <%= label_tag(:facility_id_facility, (fac.facility_type.name + fac.number.to_s)) %>
+  <% end %>
+</div>
+<% end %>
+
+
+<%= link_to 'Show Form', new_booking_path, remote: true %>

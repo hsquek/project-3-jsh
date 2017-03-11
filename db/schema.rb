@@ -18,11 +18,13 @@ ActiveRecord::Schema.define(version: 20170311035258) do
   create_table "bookings", force: :cascade do |t|
     t.integer  "facility_id"
     t.integer  "user_id"
+    t.integer  "facility_type_id"
     t.date     "date"
     t.time     "start_time"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.index ["facility_id"], name: "index_bookings_on_facility_id", using: :btree
+    t.index ["facility_type_id"], name: "index_bookings_on_facility_type_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
 
@@ -64,6 +66,7 @@ ActiveRecord::Schema.define(version: 20170311035258) do
   end
 
   add_foreign_key "bookings", "facilities"
+  add_foreign_key "bookings", "facility_types"
   add_foreign_key "bookings", "users"
   add_foreign_key "facilities", "facility_types"
 end

@@ -1,0 +1,19 @@
+<%= form_for @booking, remote: true do |f| %>
+  <%= date_field(:booking, :date) %>
+  <%= time_field(:booking, :start_time) %>
+  <%= text_field(:booking, :facility_id) %>
+
+  <div class="row">
+    <% @facilities.each do |fac| %>
+      <% if fac.facility_type_id == params[:facility_type_id].to_i then %>
+        <%= radio_button_tag(:facility_id, fac.id) %>
+        <%= label_tag(:facility_id_facility, (fac.facility_type.name + fac.number.to_s)) %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% hidden_field_tag 'facility_type_id', params[:facility_type_id] %>
+
+  <%= params[:facility_type_id] %>
+
+<% end %>
