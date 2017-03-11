@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  quota: 1
+  capacity: 1
+  session_length: 1
+
+two:
+  type: 
+  quota: 1
+  capacity: 1
+  session_length: 1

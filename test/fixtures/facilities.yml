@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  facility_type: one
+  number: 1
+
+two:
+  facility_type: two
+  number: 1

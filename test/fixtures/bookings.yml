@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  facility: one
+  user: one
+  date: 2017-03-11
+  start_time: 2017-03-11 11:52:58
+
+two:
+  facility: two
+  user: two
+  date: 2017-03-11
+  start_time: 2017-03-11 11:52:58
