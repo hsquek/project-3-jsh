@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20170311035258) do
     t.integer  "facility_id"
     t.integer  "user_id"
     t.integer  "facility_type_id"
-    t.date     "date"
-    t.time     "start_time"
+    t.date     "booking_date"
+    t.time     "start_at"
+    t.datetime "start_time"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["facility_id"], name: "index_bookings_on_facility_id", using: :btree
