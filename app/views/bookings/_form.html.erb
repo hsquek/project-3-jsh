@@ -1,19 +1,35 @@
 <%= form_for @booking, remote: true do |f| %>
+
+<% if @booking.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this idea from being saved:</h2>
+
+    <ul>
+    <% @booking.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+  <%= hidden_field(:booking, :facility_type_id, :value => params[:facility_type_id]) %>
+  <%= hidden_field(:booking, :user_id, :value => current_user.id) %>
   <%= date_field(:booking, :date) %>
   <%= time_field(:booking, :start_time) %>
 
   <div class="row">
     <% @facilities.each do |fac| %>
       <% if fac.facility_type_id == params[:facility_type_id].to_i then %>
-        <%= radio_button_tag(:facility_id, fac.id) %>
+        <%= radio_button(:booking, :facility_id, fac.id) %>
         <%= label_tag(:facility_id_facility, (fac.facility_type.name + fac.number.to_s)) %>
       <% end %>
     <% end %>
   </div>
 
-  <% hidden_field_tag 'facility_type_id', params[:facility_type_id] %>
-  <% hidden_field_tag 'user_id', current_user.id %>
+
 
   <%= params[:facility_type_id] %>
   <%= current_user.inspect %>
+  <div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>
