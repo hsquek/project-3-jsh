@@ -10,7 +10,9 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
 gem 'faker'
-gem 'rqrcode'
+gem 'google-search'
+gem 'feedjira'
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
