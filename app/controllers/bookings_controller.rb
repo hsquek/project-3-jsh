@@ -11,8 +11,12 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @bookings = Booking.all
-    @facilities = Facility.all
+    @all_facilities = Facility.all
     @facility_types = FacilityType.all
+    @tennis = Facility.where(facility_type_id: 2)
+    @court = FacilityType.find(2)
+    @tennis_open = @court.opens_at.to_i
+    @tennis_close = @court.closes_at.to_i
   end
 
   def create

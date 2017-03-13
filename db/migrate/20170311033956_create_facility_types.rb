@@ -5,6 +5,8 @@ class CreateFacilityTypes < ActiveRecord::Migration[5.0]
       t.integer :quota
       t.integer :capacity
       t.integer :session_length
+      t.time :opens_at
+      t.time :closes_at
 
       t.timestamps
     end

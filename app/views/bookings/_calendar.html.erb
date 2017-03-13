@@ -1,0 +1,10 @@
+<%= month_calendar events: @bookings do |date, bookings| %>
+  <%= date %>
+  <% bookings.each do |booking| %>
+    <% if date == booking.booking_date && booking.facility_type_id.to_s == params[:facility_type_id] then %>
+      <div>
+        <%= booking.id%>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
