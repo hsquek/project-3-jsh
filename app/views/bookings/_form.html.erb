@@ -5,7 +5,7 @@
   <%= hidden_field(:booking, :booking_date, :value => Date.today.strftime("%Y-%m-%d")) %>
 
 
-  <% @facilities = Facility.where(facility_type_id: params[:facility_type_id]).to_a %>
+  
 
   <% @facilities.each do |fac| %>
     <div class="">
@@ -13,9 +13,6 @@
       <%= label_tag(:facility_id_facility, (fac.facility_type.name + fac.number.to_s)) %>
     </div>
     <div class="">
-      <% @fac_type = FacilityType.find(params[:facility_type_id]) %>
-      <% @fac_open = @fac_type.opens_at.to_i %>
-      <% @fac_close = @fac_type.closes_at.to_i %>
       <% (@fac_open...@fac_close).step(@fac_type.session_length * 3600).each do |timestamp| %>
       <% timestamp = Time.at(timestamp).strftime("%H:%M:%S") %>
       <%= radio_button(:booking, :start_at, timestamp) %>

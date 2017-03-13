@@ -13,10 +13,10 @@ class BookingsController < ApplicationController
     @bookings = Booking.all
     @all_facilities = Facility.all
     @facility_types = FacilityType.all
-    @tennis = Facility.where(facility_type_id: 2)
-    @court = FacilityType.find(2)
-    @tennis_open = @court.opens_at.to_i
-    @tennis_close = @court.closes_at.to_i
+    @fac_type = FacilityType.find(params[:facility_type_id])
+    @fac_open = @fac_type.opens_at.to_i
+    @fac_close = @fac_type.closes_at.to_i
+    @facilities = Facility.where(facility_type_id: params[:facility_type_id]).to_a
   end
 
   def create
