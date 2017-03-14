@@ -10,13 +10,22 @@
 
         <%= hidden_field(:booking, :facility_type_id, :value => params[:facility_type_id]) %>
         <%= hidden_field(:booking, :user_id, :value => current_user.id) %>
-        <%= hidden_field(:booking, :booking_date, :value => Date.today.strftime("%Y-%m-%d"), :class => 'booking_date_input') %>
+
+
+        <%= hidden_field(:booking, :booking_date, :value => params[:booking_date]) %>
+
+
+
         <%= hidden_field(:booking, :facility_id, :value => fac.id) %>
 
         <% timestamp = Time.at(timestamp).strftime("%H:%M:%S") %>
         <%= hidden_field(:booking, :start_at, :value => timestamp) %>
-        
+
+        <% if Booking.exists?(start_at: timestamp, booking_date: params[:booking_date], facility_id: fac.id) %>
+        <%= f.submit timestamp, :disabled => true %>
+        <% else %>
         <%= f.submit timestamp%>
+        <% end %>
 
         <% end %>
       </div>

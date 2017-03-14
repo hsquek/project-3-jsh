@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-
+  get 'bookings/calendar', to: 'bookings#calendar', as: 'calendar'
   resources :facilities
   resources :facility_types
   resources :bookings

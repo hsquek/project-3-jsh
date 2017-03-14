@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.save
-    redirect_to @booking
+    redirect_to bookings_path
   end
 
   def edit
@@ -36,6 +36,15 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+  end
+
+  def calendar
+    @booking = Booking.new
+    @bookings = Booking.all
+    @fac_type = FacilityType.find(params[:facility_type_id])
+    @fac_open = @fac_type.opens_at.to_i
+    @fac_close = @fac_type.closes_at.to_i
+    @facilities = Facility.where(facility_type_id: params[:facility_type_id]).to_a
   end
 
   private
