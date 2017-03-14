@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313053304) do
+ActiveRecord::Schema.define(version: 20170313074019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,25 @@ ActiveRecord::Schema.define(version: 20170313053304) do
     t.index ["facility_id"], name: "index_bookings_on_facility_id", using: :btree
     t.index ["facility_type_id"], name: "index_bookings_on_facility_type_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "text"
+    t.integer  "complaint_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["complaint_id"], name: "index_comments_on_complaint_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "complaints", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_complaints_on_user_id", using: :btree
   end
 
   create_table "facilities", force: :cascade do |t|
@@ -70,5 +89,8 @@ ActiveRecord::Schema.define(version: 20170313053304) do
   add_foreign_key "bookings", "facilities"
   add_foreign_key "bookings", "facility_types"
   add_foreign_key "bookings", "users"
+  add_foreign_key "comments", "complaints"
+  add_foreign_key "comments", "users"
+  add_foreign_key "complaints", "users"
   add_foreign_key "facilities", "facility_types"
 end

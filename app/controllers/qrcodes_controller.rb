@@ -16,7 +16,7 @@ class QrcodesController < ApplicationController
       # makeQr
       doMQTT
 
-      # QrMailer.qrcode_email(@user_email).deliver
+      QrMailer.qrcode_email(@user_email).deliver
       redirect_to root_path
 
     end

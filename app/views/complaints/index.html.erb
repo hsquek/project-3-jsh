@@ -1,0 +1,4 @@
+<%@complaints.each do |item|%>
+<%= link_to item.title, "/complaints/#{item.id}" %>
+<p><%=item.text%></p>
+<%end%>
