@@ -1,21 +1,20 @@
-// $(document).ready(function(){
+// event delegation (.live)
+// 
+// $(document).on('click', 'td', function (e) {
+//   if (!$(e.currentTarget).text().match(/No more available slots/)) {
+//     $('.day').css({'background-color': ''})
+//     var bookDate = $(e.currentTarget)
+//     .clone()    // clone the element
+//     .children() // select all the children
+//     .remove()   // remove all the children
+//     .end()  // again go back to selected element
+//     .text()
+//     .replace(/[\n\s]/g, '')
 //
-//   var $links = document.querySelectorAll('a')
+//     $(e.currentTarget).css('background-color', 'yellow')
 //
-//   links.forEach(function(link){
-//     document.addEventListener(, function(event){
+//     $('.booking_date_input').val(bookDate)
+//   }
 //
-//       var days = document.querySelectorAll('.day')
-//
-//       console.log(days);
-//
-//       days.forEach (function(day) {
-//         day.addEventListener('click', function() {
-//           alert('clicked')
-//         })
-//
-//       })
-//     })
-//   })
 //
 // })

@@ -1,0 +1,19 @@
+<%= month_calendar events: @bookings do |date, bookings| %>
+  <%= date %>
+
+  <% @count = 0 %>
+  <% (@fac_open...@fac_close).step(@fac_type.session_length * 3600).each do |timestamp| %>
+    <% @count += 1 %>
+  <% end %>
+
+  <% @num_bookings_by_date = Booking.where(:booking_date => date, :facility_type_id => params[:facility_type_id]).to_a.length %>
+
+  <% if @count*4 == @num_bookings_by_date %>
+  <p>No more available slots</p>
+  <% else %>
+  <%= link_to "Book now", calendar_path(@booking, :facility_type_id => params[:facility_type_id], :booking_date => date), remote: true %>
+  <% end %>
+
+  </div>
+
+<% end %>

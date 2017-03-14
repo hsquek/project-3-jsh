@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  get 'bookings/calendar', to: 'bookings#calendar', as: 'calendar'
+  get 'gencode' => 'welcome#gencode'
   resources :facilities
   resources :facility_types
   resources :bookings
   resources :qrcodes
-  get 'gencode' => 'welcome#gencode'
   devise_for :users, :controllers => {registrations: 'users/registrations'}
 
   resources :complaints do

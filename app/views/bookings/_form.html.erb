@@ -1,52 +1,42 @@
-<%= month_calendar events: @bookings do |date, bookings| %>
-  <%= date %>
-  <% bookings.each do |booking| %>
-    <% if date == booking.booking_date && booking.facility_type_id.to_s == params[:facility_type_id] then %>
-      <div>
-        <%= booking.id%>
+<% @facilities.each do |fac| %>
+<h3><%= @fac_type.name + fac.number.to_s %></h3>
+
+
+    <div class="">
+      <% (@fac_open...@fac_close).step(@fac_type.session_length * 3600).each do |timestamp| %>
+      <div class="col-md-1">
+
+        <%= form_for @booking, remote: true do |f| %>
+
+        <%= hidden_field(:booking, :facility_type_id, :value => params[:facility_type_id]) %>
+        <%= hidden_field(:booking, :user_id, :value => current_user.id) %>
+
+
+        <%= hidden_field(:booking, :booking_date, :value => params[:booking_date]) %>
+
+
+
+        <%= hidden_field(:booking, :facility_id, :value => fac.id) %>
+
+        <% timestamp = Time.at(timestamp).strftime("%H:%M:%S") %>
+        <%= hidden_field(:booking, :start_at, :value => timestamp) %>
+
+        <% if Booking.exists?(start_at: timestamp, booking_date: params[:booking_date], facility_id: fac.id) %>
+        <%= f.submit timestamp, :disabled => true %>
+        <% else %>
+        <%= f.submit timestamp%>
+        <% end %>
+
+        <% end %>
       </div>
-    <% end %>
-  <% end %>
-<% end %>
+    </div>
 
-<br>
-<br>
-<br>
 
-<%= form_for @booking, remote: true do |f| %>
 
-  <%= hidden_field(:booking, :facility_type_id, :value => params[:facility_type_id]) %>
-  <%= hidden_field(:booking, :user_id, :value => current_user.id) %>
-  <%= date_field(:booking, :booking_date) %>
+  <br>
+  <br>
 
-  <% if params[:facility_type_id] == "1" then %>
-    <%= time_field(:booking, :start_at, :value => "16:00:00") %>
-    <% else %>
-    <%= time_field(:booking, :start_at) %>
   <% end %>
 
-  <div class="row">
-    <% @facilities.each do |fac| %>
-      <% if fac.facility_type_id == params[:facility_type_id].to_i then %>
-        <%= radio_button(:booking, :facility_id, fac.id) %>
-        <%= label_tag(:facility_id_facility, (fac.facility_type.name + fac.number.to_s)) %>
-      <% end %>
-    <% end %>
-  </div>
 
-<br>
-<br>
-  <div class="">
-    <p>
-      <%= params[:facility_type_id] %>
-      <%= current_user.inspect %>
-    </p>
-
-  </div>
-
-<br>
-<br>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
