@@ -12,6 +12,8 @@ gem 'bootstrap_form'
 gem 'faker'
 gem 'rqrcode'
 gem "simple_calendar", "~> 2.0"
+gem 'mqtt'
+gem 'dotenv-rails'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
