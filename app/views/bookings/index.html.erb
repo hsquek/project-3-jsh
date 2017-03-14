@@ -2,13 +2,13 @@
 <p>Find me in app/views/bookings/index.html.erb</p>
 
 <% @facility_types.each do |type| %>
-  <pre>
-    <%= type.inspect %>
+<div class="row">
+  <div class="col-md-4">
     <%= link_to type.name, new_booking_path(@booking, :facility_type_id => type.id), remote: true %>
-  </pre>
-<% end %>
+  </div>
+</div>
 
-<%= link_to 'Test', new_booking_path, remote: true %>
+<% end %>
 
 <div id="calendar" style="width:640px;height:480px;border:1px solid black"></div>
 <div id="booking-form" style="width:640px;height:480px;border:1px solid black"></div>

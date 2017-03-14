@@ -11,8 +11,8 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @bookings = Booking.all
-    @all_facilities = Facility.all
-    @facility_types = FacilityType.all
+    # @all_facilities = Facility.all
+    # @facility_types = FacilityType.all
     @fac_type = FacilityType.find(params[:facility_type_id])
     @fac_open = @fac_type.opens_at.to_i
     @fac_close = @fac_type.closes_at.to_i

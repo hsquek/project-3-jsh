@@ -1,9 +1,8 @@
 // event delegation (.live)
-var selected
-var previous
+
 $(document).on('click', 'td', function (e) {
   $('.day').css({'background-color': ''})
-  var book_date = $(e.currentTarget)
+  var bookDate = $(e.currentTarget)
                       .clone()    // clone the element
                       .children() // select all the children
                       .remove()   // remove all the children
@@ -13,6 +12,5 @@ $(document).on('click', 'td', function (e) {
 
   $(e.currentTarget).css('background-color', 'yellow')
 
-  $('#booking_booking_date').val(book_date)
-  previous = $(e.currentTarget)
+  $('.booking_date_input').val(bookDate)
 })
