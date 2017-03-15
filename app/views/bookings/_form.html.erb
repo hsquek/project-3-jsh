@@ -1,33 +1,48 @@
+<h3><%= params[:booking_date] %></h3>
+
+
 <% @facilities.each do |fac| %>
 
 <h3><%= @fac_type.name + fac.number.to_s %></h3>
 
     <div class="container" style="display:inline-flex">
 
-      <% (@fac_open...@fac_close).step(@fac_type.session_length * 3600).each do |timestamp| %>
-      <div class="col-md-1">
+      <% if @fac_type.id != 4 %>
+        <% (@fac_open...@fac_close).step(@fac_type.session_length * 3600).each do |timestamp| %>
+          <div class="col-md-1">
 
-        <%= form_for @booking, remote: true do |f| %>
+            <%= form_for @booking, remote: true do |f| %>
 
-        <%= hidden_field(:booking, :facility_type_id, :value => params[:facility_type_id]) %>
-        <%= hidden_field(:booking, :user_id, :value => current_user.id) %>
+              <%= hidden_field(:booking, :facility_type_id, :value => params[:facility_type_id]) %>
+              <%= hidden_field(:booking, :user_id, :value => current_user.id) %>
 
-        <%= hidden_field(:booking, :booking_date, :value => params[:booking_date]) %>
+              <%= hidden_field(:booking, :booking_date, :value => params[:booking_date]) %>
 
-        <%= hidden_field(:booking, :facility_id, :value => fac.id) %>
+              <%= hidden_field(:booking, :facility_id, :value => fac.id) %>
 
-        <% timestamp = Time.at(timestamp).strftime("%H:%M:%S") %>
-        <%= hidden_field(:booking, :start_at, :value => timestamp) %>
+              <% timestamp = Time.at(timestamp).strftime("%H:%M:%S") %>
+              <%= hidden_field(:booking, :start_at, :value => timestamp) %>
 
-        <% if Booking.exists?(start_at: timestamp, booking_date: params[:booking_date], facility_id: fac.id) %>
-        <%= f.submit timestamp, :disabled => true %>
-        <% else %>
-        <%= f.submit timestamp%>
-        <% end %>
+              <% if Booking.exists?(start_at: timestamp, booking_date: params[:booking_date], facility_id: fac.id) %>
+              <%= f.submit timestamp, :disabled => true %>
+              <% else %>
+              <%= f.submit timestamp%>
+              <% end %>
 
-        <% end %>
-      </div>
+            <% end %>
+          </div>
       <% end %>
 
+      <% else %>
+        <%= form_for @booking, remote: true do |f| %>
+        <%= hidden_field(:booking, :facility_type_id, :value => params[:facility_type_id]) %>
+        <%= hidden_field(:booking, :user_id, :value => current_user.id) %>
+        <%= hidden_field(:booking, :booking_date, :value => params[:booking_date]) %>
+        <%= hidden_field(:booking, :facility_id, :value => fac.id) %>
+        <%= hidden_field(:booking, :start_at, :value => @fac_type.opens_at) %>
+        <%= f.submit 'Invite' %>
+        <% end %>
+
+      <% end %>
     </div>
 <% end %>

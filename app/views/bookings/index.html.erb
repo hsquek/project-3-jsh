@@ -4,7 +4,7 @@
 <% @facility_types.each do |type| %>
 <div class="row">
   <div class="col-md-4">
-    <%= link_to type.name, calendar_path(@booking, :facility_type_id => type.id), remote: true %>
+    <%= link_to type.name, calendar_path(@booking, :facility_type_id => type.id), class: 'fac-types', remote: true %>
   </div>
 </div>
 
