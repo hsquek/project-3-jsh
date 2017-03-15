@@ -36,3 +36,4 @@ Booking.create(facility_type_id: 2, facility_id: 2, user_id: 3, booking_date: "2
 Booking.create(facility_type_id: 1, facility_id: 3, user_id: 3, booking_date: "2017-03-14",  start_at: "16:00:00", qr_code: "1234")
 
 Booking.create(facility_type_id: 3, facility_id: 1, user_id: 1, booking_date: "2017-03-18",  start_at: "21:00:00", qr_code: "1234")
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

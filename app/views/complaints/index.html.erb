@@ -2,11 +2,11 @@
 <%= link_to "Add New Complaint", "/complaints/new", class: "btn btn-primary" %>
 <div id="complaints-list">
   <%@complaints.each do |item|%>
-  <div id="complaint-delete">
     <p><%= link_to item.title, "/complaints/#{item.id}", remote: true %></p>
     <p><%=item.text%></p>
+      <div id="complaint-delete"></div>
     <p><%= link_to "Remove Complaint", item, remote: true, method: :delete, class: "btn btn-primary" %></p>
-    </div>
+
   <%end%>
 </div>
 

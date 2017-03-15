@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   get 'bookings/calendar', to: 'bookings#calendar', as: 'calendar'
   get 'gencode' => 'welcome#gencode'
   resources :facilities
