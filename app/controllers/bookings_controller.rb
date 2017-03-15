@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   respond_to :html, :js
+  before_action :authenticate_user!, show: [:mybookings, :index, :new]
 
   def index
     # @booking = Booking.new
@@ -32,6 +33,11 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def mybookings
+    @user = User.find(current_user.id)
+    @bookings = Booking.where(user_id: @user)
   end
 
   def show

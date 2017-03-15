@@ -1,0 +1,12 @@
+<h1>My bookings</h1>
+<% @bookings.each do |booking| %>
+<pre>
+  <%=booking.inspect%>
+</pre>
+<pre>
+  <%=booking[:qr_code]%>
+</pre>
+<button type="button" name="button" class="btn btn-primary">
+  <%= link_to 'Send QR Code', sendqr_path(:qr_code => booking.qr_code), class: 'text-primary'%>
+</button>
+<% end %>

@@ -2,24 +2,43 @@ require 'mqtt'
 require 'rqrcode'
 
 class QrcodesController < ApplicationController
-  # before_action :makeQr
 
   def show
 
     @qrcode = params[:id]
     @today = Date.today.strftime('%Y-%m-%d')
-    puts @user_id = Booking.find_by(qr_code: '1234').user_id
+    puts @user_id = Booking.find_by(qr_code: @qr_code).user_id
     puts @user_email = User.find(@user_id).email
 
     @found = Booking.exists?(qr_code: @qrcode, booking_date: @today)
     if @found
-      # makeQr
       doMQTT
-
-      QrMailer.qrcode_email(@user_email).deliver
+      flash[:notice] = "Welcome, remember to close gate after you."
+      redirect_to root_path
+    else
+      flash[:alert] = "Access Denied"
       redirect_to root_path
 
     end
+  end
+
+  def sendqr
+    puts @qrcode = params[:qr_code]
+
+    puts @user_id = User.find(current_user.id)
+
+    @today = Date.today.strftime('%Y-%m-%d')
+    puts @user_email = User.find(@user_id).email
+
+    @found = Booking.exists?(user_id: @user_id, qr_code: @qrcode, booking_date: @today)
+    if @found
+      makeQr(@qrcode)
+
+      QrMailer.qrcode_email(@user_email).deliver
+      redirect_to mybookings_path
+
+    end
+
   end
 
   # Publish
@@ -37,8 +56,8 @@ class QrcodesController < ApplicationController
     end
   end
 
-  def makeQr
-    qrcode = RQRCode::QRCode.new('http://yahoo.com/')
+  def makeQr(theCode)
+    qrcode = RQRCode::QRCode.new(theCode)
     # With default options specified explicitly
     png = qrcode.as_png(
       resize_gte_to: false,
