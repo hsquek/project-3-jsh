@@ -1,4 +1,4 @@
-<%=form_for :complaint, url: complaints_path do |f|%>
+<%=form_for :complaint, url: complaints_path , remote: true do |f|%>
     <p>
       <%= f.label :title %><br>
       <%= f.text_field :title %>

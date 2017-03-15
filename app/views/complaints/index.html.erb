@@ -1,4 +1,18 @@
-<%@complaints.each do |item|%>
-<%= link_to item.title, "/complaints/#{item.id}" %>
-<p><%=item.text%></p>
-<%end%>
+<a href="/complaints">View all complaints</a>
+<%= link_to "Add New Complaint", "/complaints/new", class: "btn btn-primary" %>
+<div id="complaints-list">
+  <%@complaints.each do |item|%>
+  <div id="complaint-delete">
+    <p><%= link_to item.title, "/complaints/#{item.id}", remote: true %></p>
+    <p><%=item.text%></p>
+    <p><%= link_to "Remove Complaint", item, remote: true, method: :delete, class: "btn btn-primary" %></p>
+    </div>
+  <%end%>
+</div>
+
+<div id="complaint-details" style="display:none;">
+  <h1 id="compaint-title"></h1>
+  <p  id="complaint-text"></p>
+  <div id="comments-list"></div>
+  <div id="add-comment-form"></div>
+</div>

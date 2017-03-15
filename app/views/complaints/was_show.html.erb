@@ -1,14 +1,10 @@
 <h1>Regarding: <%=@complaint.title%></h1>
 <p>Info: <%=@complaint.text%></p>
-<%@comments.each do |item|%>
-<div class="container">
-<p><%=item.user.name%> says: <%=item.text%></p>
-</div>
-<%end%>
-
-
-<%=form_for [@complaint, Comment.new] do |f|%>
+<div>
+<div id="comment-box"><%= render @comments %></div>
+<%=form_for [@complaint, Comment.new], remote: true do |f|%>
   <%= f.label :text %><br>
   <%= f.text_area :text %>
   <%= f.submit 'Add Comment'%>
 <%end%>
+</div>
