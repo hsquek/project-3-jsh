@@ -1,8 +1,9 @@
 <% @facilities.each do |fac| %>
+
 <h3><%= @fac_type.name + fac.number.to_s %></h3>
 
+    <div class="container" style="display:inline-flex">
 
-    <div class="">
       <% (@fac_open...@fac_close).step(@fac_type.session_length * 3600).each do |timestamp| %>
       <div class="col-md-1">
 
@@ -11,10 +12,7 @@
         <%= hidden_field(:booking, :facility_type_id, :value => params[:facility_type_id]) %>
         <%= hidden_field(:booking, :user_id, :value => current_user.id) %>
 
-
         <%= hidden_field(:booking, :booking_date, :value => params[:booking_date]) %>
-
-
 
         <%= hidden_field(:booking, :facility_id, :value => fac.id) %>
 
@@ -29,14 +27,7 @@
 
         <% end %>
       </div>
+      <% end %>
+
     </div>
-
-
-
-  <br>
-  <br>
-
-  <% end %>
-
-
 <% end %>

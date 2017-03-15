@@ -32,6 +32,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    @booking.destroy
   end
 
   def show
