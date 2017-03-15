@@ -1,4 +1,6 @@
 class ComplaintsController < ApplicationController
+  respond_to :html, :js
+
   def index
     @complaints = Complaint.all
   end
@@ -22,6 +24,13 @@ class ComplaintsController < ApplicationController
     @comments = Comment.where(complaint_id: @complaint.id)
     puts "in the show of complaints comments are #{@comments.inspect}"
   end
+
+def destroy
+  @complaint = Complaint.find(params[:id])
+  @complaint.destroy
+  @complaints = Complaint.all
+
+end
 
   private
     def complaint_params
