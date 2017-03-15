@@ -1,0 +1,28 @@
+<div class="container">
+  <%= button_to "Refresh", root_path, :method => :get %>
+  <h4>Tennis:</h4>
+
+<% @results[0..3].each do |result|%>
+    <pre>
+      <a href="<%=result.at_css("a")['href']%>" target="_blank"><%=result.at_css("a h3 span").text%></a>
+   </pre>
+ <% end%>
+<a href="http://bleacherreport.com/tennis">Source of this information: http://bleacherreport.com/tennis</a>
+
+<h2>Swimming:</h2>
+<% @swimming_results[0..3].each do |single_swim|%>
+   <pre>
+       <a href="<%=URI.join("http://www.bbc.com", single_swim.at_css("h3 a")['href']).to_s%>" target="_blank"><%=single_swim.at_css("h3 a span").text%></a>
+   </pre>
+ <%end%>
+<a href="http://www.bbc.com/sport/swimming">Source of this information: http://www.bbc.com/sport/swimming</a>
+
+<h2>Events Around you!</h2>
+<% @events[0..3].each do |event|%>
+<pre>
+  <p> Title : <%=event.at_css("div.list-card__title").text.strip%></p>
+  <p> Date : <%=event.at_css("time.list-card__date").text.strip%></p>
+  <span><%=image_tag(event.at_css(".js-poster-image").attr('src'))%></span>
+  <p>Venue : <%=event.at_css("div.list-card__venue").text.strip%></p>
+</pre>
+<%end%>

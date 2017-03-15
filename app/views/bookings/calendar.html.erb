@@ -1,5 +1,5 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<h1>Bookings#calendar</h1>
+<p>Find me in app/views/bookings/calendar.html.erb</p>
 
 <% @facility_types.each do |type| %>
 <div class="row">
@@ -10,5 +10,7 @@
 
 <% end %>
 
-<div id="calendar" style="width:640px;height:480px;border:1px solid black"></div>
+<div id="events_calendar" style="width:640px;height:480px;border:1px solid black">
+  <%= render 'calendar', locals: {events: @bookings} %>
+</div>
 <div id="booking-form" style="width:640px;height:480px;border:1px solid black"></div>
