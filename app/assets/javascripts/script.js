@@ -1,5 +1,5 @@
 // event delegation (.live)
-// 
+//
 // $(document).on('click', 'td', function (e) {
 //   if (!$(e.currentTarget).text().match(/No more available slots/)) {
 //     $('.day').css({'background-color': ''})
@@ -16,5 +16,10 @@
 //     $('.booking_date_input').val(bookDate)
 //   }
 //
-//
 // })
+
+$(document).on('mouseover', 'a', function (e) {
+  if ($(e.currentTarget).text().match(/Next/) || $(e.currentTarget).text().match(/Previous/)) {
+    $(e.currentTarget).attr('data-remote', true)
+  }
+})

@@ -1,0 +1,16 @@
+<h1>Bookings#calendar</h1>
+<p>Find me in app/views/bookings/calendar.html.erb</p>
+
+<% @facility_types.each do |type| %>
+<div class="row">
+  <div class="col-md-4">
+    <%= link_to type.name, calendar_path(@booking, :facility_type_id => type.id), remote: true %>
+  </div>
+</div>
+
+<% end %>
+
+<div id="events_calendar" style="width:640px;height:480px;border:1px solid black">
+  <%= render 'calendar', locals: {events: @bookings} %>
+</div>
+<div id="booking-form" style="width:640px;height:480px;border:1px solid black"></div>
