@@ -1,4 +1,6 @@
 <div class="container">
+  <h1>ignore from here</h1>
 <p><%=comment.user.name%> says: <%=comment.text%></p>
+
 <%= link_to "Destroy Comment", [comment.complaint, comment], method: :delete, data: {confirm: 'Are you sure?'},class: "btn btn-primary", remote: true %>
 </div>

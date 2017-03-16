@@ -10,6 +10,22 @@ class ComplaintsController < ApplicationController
     @complaint = Complaint.new
   end
 
+  def update
+    @complaint = Complaint.find(params[:id])
+    # @complaint.update(update_complaint_params)
+    @complaint.toggle!(:active)
+    @complaint.save
+    @complaints = Complaint.all
+    redirect_to complaints_path
+  end
+
+  # def change_complaint_status
+  #   @complaint = Complaint.find(params[:id])
+  #   @complaint.toggle!(:active)
+  #   @complaint.update_attributes(params[:active])
+  #   redirect_to complaints_path
+  # end
+
   def create
     @complaint = Complaint.new(complaint_params)
       puts complaint_params
@@ -34,7 +50,11 @@ end
 
   private
     def complaint_params
-      params.require(:complaint).permit(:text, :title).merge(user: current_user)
+      params.require(:complaint).permit(:text, :title, :active).merge(user: current_user)
+    end
+
+    def update_complaint_params
+      params.require(:complaint).permit(:active)
     end
 
     def is_not_admin?

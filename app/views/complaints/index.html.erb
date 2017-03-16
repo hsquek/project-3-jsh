@@ -1,20 +1,22 @@
 <a href="/complaints">View all complaints</a>
 <%= link_to "Add New Complaint", "/complaints/new", class: "btn btn-primary" %>
+
 <div id="complaints-list">
   <%@complaints.each do |item|%>
     <div id="complaint-delete-<%=item.id%>">
       <p><%= link_to item.title, "/complaints/#{item.id}", remote: true %></p>
       <p><%=item.text%></p>
       <%if current_user.an_admin? %>
+        <%= link_to "#{item.active ? 'Active' : 'Inactive' }", item, method: :patch, class: "btn btn-primary" %>
         <p><%= link_to "Remove Complaint", item, remote: true, method: :delete, class: "btn btn-primary" %></p>
       <%end%>
-    </div>
+      </div>
   <%end%>
 </div>
 
 <div id="complaint-details" style="display:none;">
-  <h1 id="compaint-title"></h1>
-  <p  id="complaint-text"></p>
+  <div id="complaint-title"></div>
+  <div id="complaint-text"></div>
   <div id="comments-list"></div>
   <div id="add-comment-form"></div>
 </div>

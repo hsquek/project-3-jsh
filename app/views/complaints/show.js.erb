@@ -1,4 +1,5 @@
+$('#complaint-title').html("<%= j (render 'complaint') %>");
 $('#comments-list').html("<%= j (render @comments) %>");
-$('#complaint-details').show()
-$('#add-comment-form').html("<%= j (render 'form') %>")
+ $('#complaint-details').show()
+ $('#add-comment-form').html("<%= j (render 'form') %>")
 $('#complaints-list').hide()
