@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :is_admin? , only: [:index, :new, :edit, :destroy, :create, :show]
+  before_action :authenticate_user!, :is_admin, only: [:index, :new, :edit, :destroy, :create, :show]
 
   def index
     @users = User.all
@@ -35,13 +35,8 @@ class UsersController < ApplicationController
 
   private
 
-  def is_admin?
-    puts "current user is #{current_user}"
-    if current_user.an_admin?
-      true
-    else
-      false
-    end
+  def is_admin
+    redirect_to(root_path) unless current_user.an_admin?
   end
 
   def user_params

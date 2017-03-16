@@ -1,5 +1,5 @@
 class ComplaintsController < ApplicationController
-  before_action :is_not_admin?, only: [:index, :new, :create, :show]
+  before_action :authenticate_user!, :is_not_admin?, only: [:index, :new, :create, :show]
   respond_to :html, :js
 
   def index
