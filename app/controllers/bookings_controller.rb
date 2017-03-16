@@ -24,18 +24,18 @@ class BookingsController < ApplicationController
     @bookings = Booking.where(user_id: current_user.id)
     @booking = Booking.new(booking_params)
     if @booking.save
-      notice = "Success"
+      flash[:notice] = "Success"
     else
-      alert = "Booking failed"
+      flash[:alert] = "Booking failed"
     end
     # @booking.save
   end
 
-  def edit
-  end
-
-  def update
-  end
+  # def edit
+  # end
+  #
+  # def update
+  # end
 
   def destroy
     @booking = Booking.find(params[:id])
@@ -51,9 +51,9 @@ class BookingsController < ApplicationController
     @bookings = Booking.where(user_id: @user)
   end
 
-  def show
-    @booking = Booking.find(params[:id])
-  end
+  # def show
+  #   @booking = Booking.find(params[:id])
+  # end
 
   def calendar
     @booking = Booking.new

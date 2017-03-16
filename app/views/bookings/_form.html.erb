@@ -40,7 +40,7 @@
         <%= hidden_field(:booking, :booking_date, :value => params[:booking_date]) %>
         <%= hidden_field(:booking, :facility_id, :value => fac.id) %>
         <%= hidden_field(:booking, :start_at, :value => @fac_type.opens_at) %>
-        <h3><%= f.submit 'Invite guests' %></h3>
+        <%= f.submit 'Get invite' %>
         <% end %>
 
       <% end %>
