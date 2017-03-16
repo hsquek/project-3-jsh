@@ -7,7 +7,6 @@
     <%=booking[:qr_code]%>
   </pre>
   <%= link_to 'Delete booking', booking, method: :delete, class: 'btn btn-primary text-primary'%>
-  <button type="button" name="button" class="btn btn-primary">
-    <%= link_to 'Send QR Code', sendqr_path(:qr_code => booking.qr_code), class: 'text-primary'%>
-  </button>
+  <%= link_to 'Send QR Code', sendqr_path(:qr_code => booking.qr_code), class: 'btn btn-primary text-primary'%>
+
 <% end %>

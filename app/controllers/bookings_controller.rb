@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
 
   def index
     # @booking = Booking.new
-    # @bookings = Booking.all
+    @bookings = Booking.where(user_id: current_user.id)
     @facility_types = FacilityType.all
     @facilities = Facility.all
   end
@@ -21,9 +21,9 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @bookings = Booking.where(user_id: current_user.id)
     @booking = Booking.new(booking_params)
     @booking.save
-    redirect_to bookings_path
   end
 
   def edit
@@ -34,8 +34,11 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
+    @bookings = Booking.where(user_id: current_user.id)
     @booking.destroy
-    redirect_to root_path
+    respond_to do |format|
+        format.js { render 'bookings/mybookings'}
+    end
   end
 
   def mybookings

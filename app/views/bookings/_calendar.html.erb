@@ -13,7 +13,11 @@
     <% if @count*4 == @num_bookings_by_date %>
     <p>No more available slots</p>
     <% else %>
-        <%= link_to "Book now", new_booking_path(:facility_type_id => params[:facility_type_id], :booking_date => date), remote: true %>
+      <% if params[:facility_type_id].to_i != 4 %>
+          <%= link_to "Book now", new_booking_path(:facility_type_id => params[:facility_type_id], :booking_date => date),remote: true %>
+      <% else %>
+          <%= link_to "Generate QR", new_booking_path(:facility_type_id => params[:facility_type_id], :booking_date => date),remote: true %>
+      <% end %>
     <% end %>
   <% end %>
 

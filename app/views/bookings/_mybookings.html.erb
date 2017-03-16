@@ -1,0 +1,17 @@
+<h3><strong>My bookings</strong></h3>
+<hr>
+<% @bookings.each do |booking| %>
+<div class="row">
+  <div class="col-md-10">
+    <p><h4><%= FacilityType.find(Booking.find(booking.id).facility_type_id).name.to_s + " " + Facility.find(Booking.find(booking.id).facility_id).number.to_s %></h4></p>
+    <p><h5>Time:</h5> <%= "#{booking.start_at.strftime("%H:%M")} - #{(booking.start_at + FacilityType.find(Booking.find(booking.id).facility_type_id).session_length.hours).strftime("%H:%M")}" %></p>
+    <p><h5>Date:</h5> <%= booking.booking_date.strftime("%Y-%m-%d") %></p>
+    <hr>
+  </div>
+  <div class="col-md-2">
+    <%= link_to '', booking, method: :delete, class: 'glyphicon glyphicon-remove', remote: true%>
+    <%= link_to '', sendqr_path(:qr_code => booking.qr_code), class: 'glyphicon glyphicon-qrcode'%>
+  </div>
+</div>
+
+<% end %>

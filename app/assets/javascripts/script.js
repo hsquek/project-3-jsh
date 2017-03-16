@@ -28,6 +28,7 @@ $(document).on('click', 'td', function (e) {
     // return false;
 
     // $('.booking_date_input').val(bookDate)
+    $('#booking-form').show()
   }
 
 })
@@ -35,9 +36,15 @@ $(document).on('click', 'td', function (e) {
 $(document).on('mouseover', 'a', function (e) {
   if ($(e.currentTarget).text().match(/Next/) || $(e.currentTarget).text().match(/Previous/)) {
     $(e.currentTarget).attr('data-remote', true)
+
   }
 })
 
 $(document).on('click', '.fac-types', function (e) {
   $('#booking-form').empty()
+})
+
+$(document).on('click', '.btn-submit', function (e) {
+  $('#booking-form').hide()
+  $('.day').css({'background-color': ''})
 })
