@@ -4,6 +4,7 @@ class CreateComplaints < ActiveRecord::Migration[5.0]
       t.references :user, foreign_key: true
       t.string :title
       t.text :text
+      t.boolean :active
 
       t.timestamps
     end

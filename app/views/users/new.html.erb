@@ -1,0 +1,36 @@
+<h1>Create a new user</h1>
+<%= form_for :user, url:users_path do |f| %>
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :block %><br>
+    <%= f.text_field :block %>
+  </p>
+
+  <p>
+    <%= f.label :unit %><br>
+    <%= f.text_field :unit %>
+  </p>
+
+  <p>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <%= f.label :an_admin? %><br>
+    <%= f.check_box :an_admin %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
