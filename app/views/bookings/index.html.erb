@@ -1,12 +1,23 @@
 <%= render 'partials/header' %>
-<% @facility_types.each do |type| %>
-<div class="row">
-  <div class="col-md-4">
-    <%= link_to type.name, calendar_path(@booking, :facility_type_id => type.id), remote: true %>
-  </div>
-</div>
-
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <div id="my-bookings">
+        <%= render 'mybookings' %>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <% @facility_types.each do |type| %>
+      <div class="col-md-3">
+        <%= link_to type.name, calendar_path(@booking, :facility_type_id => type.id), class: 'fac-types', remote: true %>
+      </div>
 <% end %>
 
-<div id="calendar"></div>
-<div id="booking-form"></div>
+        <div class="row">
+          <div id="calendar" class="col-md-8"></div>
+          <div id="booking-form" class="col-md-4"></div>
+        </div>
+
+    </div>
+  </div>
+</div>

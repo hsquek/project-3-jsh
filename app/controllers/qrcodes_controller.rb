@@ -30,12 +30,13 @@ class QrcodesController < ApplicationController
     @today = Date.today.strftime('%Y-%m-%d')
     puts @user_email = User.find(@user_id).email
 
-    @found = Booking.exists?(user_id: @user_id, qr_code: @qrcode, booking_date: @today)
+    @found = Booking.exists?(user_id: @user_id, qr_code: @qrcode)
     if @found
-      makeQr(@qrcode)
+      makeQr('https://floating-ravine-65207.herokuapp.com/qrcodes/' + @qrcode)
 
       QrMailer.qrcode_email(@user_email).deliver
-      redirect_to mybookings_path
+      flash[:notice] = "QR Code sent. Please check your email."
+      redirect_to bookings_path
 
     end
 
@@ -64,7 +65,7 @@ class QrcodesController < ApplicationController
       resize_exactly_to: false,
       fill: 'white',
       color: 'black',
-      size: 120,
+      size: 250,
       border_modules: 4,
       module_px_size: 6,
       file: nil # path to write
