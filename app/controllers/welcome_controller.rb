@@ -10,7 +10,6 @@ class WelcomeController < ApplicationController
     url3 = "https://www.eventbrite.sg/d/marine-parade/events/?crt=regular&sort=date"
     doc_events = Nokogiri::HTML(open(url3))
     @events = doc_events.css('.list-card-v2')
-    puts @events
 
     # url = "http://feeds.bbci.co.uk/sport/tennis/rss.xml?edition=int#"
     # @feed = Feedjira::Feed.fetch_and_parse(url)

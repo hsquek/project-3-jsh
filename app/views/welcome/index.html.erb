@@ -1,153 +1,60 @@
-  <div class="slider">
-    <div id="about-slider">
-      <div id="carousel-slider" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators visible-xs">
-          <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-slider" data-slide-to="1"></li>
-          <li data-target="#carousel-slider" data-slide-to="2"></li>
-        </ol>
+<section id="hero-area" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="block wow fadeInUp" data-wow-delay=".3s">
 
-        <div class="carousel-inner">
-          <div class="item active">
-            <img src="img/slider/pool.jpg" class="img-responsive" alt="">
-            <div class="carousel-caption">
-              <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-                <h2><span>Modern Living</span></h2>
-              </div>
-              <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.6s">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
-              </div>
-              <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.9s">
-                <button type="button" name="button" class="btn btn-primary btn-lg">
-                  <%= link_to 'Make a Booking',bookings_path, class: 'text-muted'%>
-                </button>
-              </div>
-            </div>
-            </div>
-            <div class="item">
-            <img src="img/slider/bbq.jpg" class="img-responsive" alt="">
-            <div class="carousel-caption">
-              <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="1.0s">
-                <h2>Facilities</h2>
-              </div>
-              <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="1.3s">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
-              </div>
-              <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="1.6s">
-                <form class="form-inline">
-                  <div class="form-group">
-                    <button type="button" name="purchase" class="btn btn-primary btn-lg" required="required">Live Demo</button>
-                  </div>
-                  <div class="form-group">
-                    <button type="button" name="subscribe" class="btn btn-primary btn-lg" required="required">My Bookings</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-            </div>
-            <div class="item">
-            <img src="img/slider/wifi.jpg" class="img-responsive" alt="">
-            <div class="carousel-caption">
-              <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-                <h2>Modern Design</h2>
-              </div>
-              <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.6s">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
-              </div>
-              <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.9s">
-                <form class="form-inline">
-                  <div class="form-group">
-                    <button type="button" name="purchase" class="btn btn-primary btn-lg" required="required">Live Demo</button>
-                  </div>
-                  <div class="form-group">
-                    <button type="button" name="subscribe" class="btn btn-primary btn-lg" required="required">My Bookings</button>
-                  </div>
-                </form>
-              </div>
-            </div>
+                    <!-- Slider -->
+                    <section class="cd-intro">
+                        <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s" >
+                        <span>Welcome to the Peak</span><br>
+                        <span class="cd-words-wrapper">
+                            <b class="is-visible">Centrally located</b>
+                            <b>Fully furnished</b>
+                            <b>Many amenities</b>
+                            <b>QR Code gate access</b>
+                        </span>
+                        </h1>
+                        </section> <!-- cd-intro -->
+                        <!-- /.slider -->
+                        <h2 class="wow fadeInUp animated" data-wow-delay=".6s" >
+                            A stunningly beautiful home designed to help you fulfill your aspirations in life. <br>Your choice of 168 luxurious units, ranging from 1-, 2-, 3-bedroom units to an exclusive penthouse.
+                        </h2>
+                    </div>
+                </div>
             </div>
         </div>
-        <a class="left carousel-control hidden-xs" href="#carousel-slider" data-slide="prev">
-          <i class="fa fa-angle-left"></i>
-        </a>
+    </section><!--/#main-slider-->
+    <section id="happenings" class="works">
+        <div class="container">
+            <div class="section-heading">
+                <h1 class="title wow fadeInDown" data-wow-delay=".3s">Happenings around your apartment</h1>
+            </div>
+            <div class="row" style="display:flex; flex-wrap:wrap;">
+              <% @events[0..10].each do |event|%>
+              <div class="col-sm-4 col-xs-12">
+                  <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+                      <div class="img-wrapper">
+                        <%=image_tag(event.at_css(".js-poster-image").attr('src'), class:'img-responsive')%>
+                          <div class="overlay">
+                              <div class="buttons">
+                                  <a target="_blank" href="<%=event.css('a')[0]["href"]%>">Details</a>
+                              </div>
+                          </div>
+                      </div>
+                      <figcaption>
+                      <h4>
+                        <a href="<%=event.css('a')[0]["href"]%>" target="_blank"><%=event.at_css("div.list-card__title").text.strip%></a>
 
-        <a class=" right carousel-control hidden-xs"href="#carousel-slider" data-slide="next">
-          <i class="fa fa-angle-right"></i>
-        </a>
-      </div> <!--/#carousel-slider-->
-    </div><!--/#about-slider-->
-  </div><!--/#slider-->
-
-  <div id="happenings">
-		<div class="container">
-			<div class="text-center">
-				<h3>Happenings around</h3>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur adipisicing elit</p>
-			</div>
-			<div class="row">
-				<figure class="effect-chico">
-					<div class="col-md-3 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-						<a href="img/work/1.jpg" class="flipLightBox">
-						<img src="img/work/1.jpg" class="img-responsive" alt="">
-						</a>
-					</div>
-				</figure>
-				<figure class="effect-chico">
-					<div class="col-md-3 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-						<a href="img/work/2.jpg" class="flipLightBox">
-						<img src="img/work/2.jpg" class="img-responsive" alt="">
-						</a>
-					</div>
-				</figure>
-				<figure class="effect-chico">
-					<div class="col-md-3 wow fadeInDown" data-wow-offset="0" data-wow-delay="0.3s">
-						<a href="img/work/3.jpg" class="flipLightBox">
-						<img src="img/work/3.jpg" class="img-responsive" alt="">
-						</a>
-					</div>
-				</figure>
-				<figure class="effect-chico">
-					<div class="col-md-3 wow fadeInDown" data-wow-offset="0" data-wow-delay="0.3s">
-						<a href="img/work/4.jpg" class="flipLightBox">
-						<img src="img/work/4.jpg" class="img-responsive" alt="">
-						</a>
-					</div>
-				</figure>
-			</div>
-		</div>
-		<div class="gallery">
-			<div class="container">
-				<div class="row">
-					<figure class="effect-chico">
-						<div class="col-md-3 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-							<a href="img/work/5.jpg" class="flipLightBox">
-							<img src="img/work/5.jpg" class="img-responsive" alt="">
-							</a>
-						</div>
-					</figure>
-					<figure class="effect-chico">
-						<div class="col-md-3 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-							<a href="img/work/6.jpg" class="flipLightBox">
-							<img src="img/work/6.jpg" class="img-responsive" alt="">
-							</a>
-						</div>
-					</figure>
-					<figure class="effect-chico">
-						<div class="col-md-3 wow fadeInDown" data-wow-offset="0" data-wow-delay="0.3s">
-							<a href="img/work/7.jpg" class="flipLightBox">
-							<img src="img/work/7.jpg" class="img-responsive" alt="">
-							</a>
-						</div>
-					</figure>
-					<figure class="effect-chico">
-						<div class="col-md-3 wow fadeInDown" data-wow-offset="0" data-wow-delay="0.3s">
-							<a href="img/work/8.jpg" class="flipLightBox">
-							<img src="img/work/8.jpg" class="img-responsive" alt="">
-							</a>
-						</div>
-					</figure>
-				</div>
-			</div>
-		</div>
-	</div><!--/#gallery-->
+                      </a>
+                      </h4>
+                      <p>
+                          <%=event.at_css("time.list-card__date").text.strip%>
+                      </p>
+                      </figcaption>
+                  </figure>
+              </div>
+              <%end%>
+            </div>
+        </div>
+    </section> <!-- #works -->
