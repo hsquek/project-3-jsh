@@ -23,12 +23,12 @@ class BookingsController < ApplicationController
   def create
     @bookings = Booking.where(user_id: current_user.id)
     @booking = Booking.new(booking_params)
-    # if @booking.save
-    #   flash[:notice] = "Success"
-    # else
-    #   flash[:alert] = errors.inspect
-    # end
-    @booking.save
+    if @booking.save
+      notice = "Success"
+    else
+      alert = "Booking failed"
+    end
+    # @booking.save
   end
 
   def edit

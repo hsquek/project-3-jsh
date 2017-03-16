@@ -1,5 +1,5 @@
 <%= render 'partials/header' %>
-<div class="container">
+<div class="container" style="margin-top:25px">
   <div class="row">
     <div class="col-md-2">
       <div id="my-bookings">
@@ -7,17 +7,20 @@
       </div>
     </div>
     <div class="col-md-10">
-      <% @facility_types.each do |type| %>
-      <div class="col-md-3">
-        <%= link_to type.name, calendar_path(@booking, :facility_type_id => type.id), class: 'fac-types', remote: true %>
+      <div class="col-md-8">
+        <ul class="nav nav-tabs">
+          <% @facility_types.each do |type| %>
+          <li role="presentation" class="facility-tabs">
+            <%= link_to type.name, calendar_path(@booking, :facility_type_id => type.id), class: 'fac-types', remote: true %>
+          </li>
+          <% end %>
+        </ul>
       </div>
-<% end %>
 
         <div class="row">
-          <div id="calendar" class="col-md-8"></div>
-          <div id="booking-form" class="col-md-4"></div>
+          <div id="calendar" class="col-md-8" style="margin-top:15px"></div>
+          <div id="booking-form" class="col-md-4" style="margin-top:15px"></div>
         </div>
-
     </div>
   </div>
 </div>

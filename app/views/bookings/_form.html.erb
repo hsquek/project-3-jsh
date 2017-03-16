@@ -4,7 +4,7 @@
 <% @facilities.each do |fac| %>
 
 <% if @fac_type.id != 4 %>
-<h3><%= @fac_type.name + " " + fac.number.to_s %></h3>
+<h4><%= @fac_type.name + " " + fac.number.to_s %></h4>
 
     <div style="display:inline-flex; flex-wrap:wrap;">
 
@@ -34,14 +34,13 @@
       <% end %>
 
       <% else %>
-        <h3>Invite guests</h3>
         <%= form_for @booking, remote: true do |f| %>
         <%= hidden_field(:booking, :facility_type_id, :value => params[:facility_type_id]) %>
         <%= hidden_field(:booking, :user_id, :value => current_user.id) %>
         <%= hidden_field(:booking, :booking_date, :value => params[:booking_date]) %>
         <%= hidden_field(:booking, :facility_id, :value => fac.id) %>
         <%= hidden_field(:booking, :start_at, :value => @fac_type.opens_at) %>
-        <%= f.submit 'Invite' %>
+        <h3><%= f.submit 'Invite guests' %></h3>
         <% end %>
 
       <% end %>

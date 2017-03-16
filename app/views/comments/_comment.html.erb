@@ -1,6 +1,7 @@
-<div class="container">
-  <h1>ignore from here</h1>
-<p><%=comment.user.name%> says: <%=comment.text%></p>
 
-<%= link_to "Destroy Comment", [comment.complaint, comment], method: :delete, data: {confirm: 'Are you sure?'},class: "btn btn-primary", remote: true %>
+<div class="row" style="padding-left:15px">
+  <div class="col-md-6">
+    <em><%=comment.user.name%>: <%=comment.text%></em>
+    <%= link_to "", [comment.complaint, comment], method: :delete, data: {confirm: 'Are you sure?'}, class: "glyphicon glyphicon-remove", remote: true %>
+  </div>
 </div>

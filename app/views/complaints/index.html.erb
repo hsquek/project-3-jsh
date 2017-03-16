@@ -1,22 +1,37 @@
-<a href="/complaints">View all complaints</a>
-<%= link_to "Add New Complaint", "/complaints/new", class: "btn btn-primary" %>
+<%= render 'partials/header' %>
 
-<div id="complaints-list">
-  <%@complaints.each do |item|%>
-    <div id="complaint-delete-<%=item.id%>">
-      <p><%= link_to item.title, "/complaints/#{item.id}", remote: true %></p>
-      <p><%=item.text%></p>
-      <%if current_user.an_admin? %>
+<div class="container">
+<div class="row">
+  <div class="col-md-2">
+    <div>
+      <h1><a href="/complaints">Issues</a></h1>
+      <%= link_to "Add New Complaint", "/complaints/new", class: "btn btn-primary" %>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <div id="complaints-list" style="display:flex; flex-wrap:wrap">
+      <%@complaints.each do |item|%>
+      <div class="col-md-4" id="complaint-delete-<%=item.id%>" style="padding:">
+        <h3><%= link_to item.title, "/complaints/#{item.id}", remote: true %></h3>
+        <p><%=item.text%></p>
+        <% if current_user.an_admin? == false %>
+          <p><em>Status: <%= "#{item.active ? 'Complete' : 'Pending' }" %></em></p>
+        <% end %>
+        <%if current_user.an_admin? %>
         <%= link_to "#{item.active ? 'Active' : 'Inactive' }", item, method: :patch, class: "btn btn-primary" %>
         <p><%= link_to "Remove Complaint", item, remote: true, method: :delete, class: "btn btn-primary" %></p>
-      <%end%>
+        <%end%>
       </div>
-  <%end%>
+      <%end%>
+    </div>
+    <div id="complaint-details" style="display:none;">
+      <div id="complaint-title"></div>
+      <div id="complaint-text"></div>
+      <div id="comments-list"></div>
+      <div id="add-comment-form"></div>
+    </div>
+  </div>
 </div>
 
-<div id="complaint-details" style="display:none;">
-  <div id="complaint-title"></div>
-  <div id="complaint-text"></div>
-  <div id="comments-list"></div>
-  <div id="add-comment-form"></div>
+
 </div>
