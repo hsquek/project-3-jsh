@@ -10,7 +10,7 @@ class QrcodesController < ApplicationController
     puts @user_id = Booking.find_by(qr_code: @qr_code).user_id
     puts @user_email = User.find(@user_id).email
 
-    @found = Booking.exists?(qr_code: @qrcode, booking_date: @today)
+    @found = Booking.exists?(qr_code: @qr_code, booking_date: @today)
     if @found
       doMQTT
       flash[:notice] = "Welcome, remember to close gate after you."
