@@ -1,1 +1,1 @@
-$('#complaint-delete').html("<%= j (render 'message') %>");
+$('#complaint-delete-<%= j (params[:id]) %>').html("<%= j (render 'message') %>");

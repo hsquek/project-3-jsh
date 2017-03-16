@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create(email: 'hsquek06@gmail.com', name: 'wdi', password: '123456', block: 123, unit: '12-34')
-User.create(email: 'skeerti2@gmail.com', name: 'wdi-sg', password: '123456', block: 345, unit: '34-56')
-User.create(email: 'johnacsyen@gmail.com', name: 'wdi-8', password: '123456', block: 123, unit: '56-78')
+User.create(email: 'hsquek06@gmail.com', name: 'wdi', password: '123456', block: 123, unit: '12-34', an_admin: FALSE)
+User.create(email: 'skeerti2@gmail.com', name: 'wdi-sg', password: '123456', block: 345, unit: '34-56', an_admin: FALSE)
+User.create(email: 'johnacsyen@gmail.com', name: 'wdi-8', password: '123456', block: 123, unit: '56-78', an_admin: FALSE)
 
 FacilityType.create(name: 'BBQ', quota: 1, capacity: 4, session_length: 6, opens_at: "16:00:00", closes_at: "22:00:00")
 FacilityType.create(name: 'Tennis', quota: 2, capacity: 2, session_length: 2, opens_at: "08:00:00", closes_at: "22:00:00")

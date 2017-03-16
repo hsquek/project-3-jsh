@@ -3,5 +3,6 @@ class AddFieldToUsers < ActiveRecord::Migration[5.0]
     add_column :users, :name, :string
     add_column :users, :block, :integer
     add_column :users, :unit, :string
+    add_column :users, :an_admin, :boolean
   end
 end

@@ -1,0 +1,22 @@
+<h1>All users of Condo</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Block</th>
+    <th>Unit No:</th>
+    <th>Admin</th>
+  </tr>
+<% @users.each do |user| %>
+<tr>
+  <td style="padding:0 15px 0 15px;"><%= user.name%></td>
+  <td style="padding:0 15px 0 15px;"><%=user.email%></td>
+  <td style="padding:0 15px 0 15px;"><%=user.block%></td>
+  <td style="padding:0 15px 0 15px;"><%=user.unit%></td>
+  <td style="padding:0 15px 0 15px;"><%=user.an_admin%></td>
+  <td style="padding:0 15px 0 15px;"><%= link_to "View User", user, class: "btn btn-primary" %></td>
+</tr>
+ <%end%>
+ </table>
+
+ <%= link_to "View Complaints", complaints_path, class: "btn btn-primary" %>

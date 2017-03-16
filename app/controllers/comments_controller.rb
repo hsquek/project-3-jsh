@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     @complaint = Complaint.find(params[:complaint_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to complaints_path
+    @comments = Comment.all
   end
 
 
