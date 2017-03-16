@@ -5,7 +5,7 @@ class QrcodesController < ApplicationController
 
   def show
 
-    @qrcode = params[:id]
+    @qr_code = params[:id]
     @today = Date.today.strftime('%Y-%m-%d')
     puts @user_id = Booking.find_by(qr_code: @qr_code).user_id
     puts @user_email = User.find(@user_id).email
