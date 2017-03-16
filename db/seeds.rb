@@ -26,14 +26,14 @@ Facility.create(facility_type_id: 3, number: 1)
 Facility.create(facility_type_id: 4, number: 1)
 #
 # d = DateTime.new(2017,3,10,4,0,0)
-Booking.create(facility_type_id: 1, facility_id: 1, user_id: 1, booking_date: "2017-03-14",  start_at: "16:00:00")
+Booking.create(facility_type_id: 1, facility_id: 1, user_id: 1, booking_date: "2017-03-17",  start_at: "16:00:00")
 
-Booking.create(facility_type_id: 1, facility_id: 1, user_id: 2, booking_date: "2017-03-15",  start_at: "16:00:00")
+Booking.create(facility_type_id: 1, facility_id: 1, user_id: 2, booking_date: "2017-03-18",  start_at: "16:00:00")
 
-Booking.create(facility_type_id: 1, facility_id: 1, user_id: 2, booking_date: "2017-03-16",  start_at: "16:00:00")
+Booking.create(facility_type_id: 2, facility_id: 1, user_id: 2, booking_date: "2017-03-19",  start_at: "16:00:00")
 
-Booking.create(facility_type_id: 2, facility_id: 2, user_id: 3, booking_date: "2017-03-15",  start_at: "07:00:00")
+Booking.create(facility_type_id: 2, facility_id: 2, user_id: 3, booking_date: "2017-03-20",  start_at: "07:00:00")
 
-Booking.create(facility_type_id: 1, facility_id: 3, user_id: 3, booking_date: "2017-03-14",  start_at: "16:00:00")
+Booking.create(facility_type_id: 1, facility_id: 3, user_id: 3, booking_date: "2017-03-21",  start_at: "16:00:00")
 
-Booking.create(facility_type_id: 3, facility_id: 1, user_id: 1, booking_date: "2017-03-18",  start_at: "21:00:00")
+Booking.create(facility_type_id: 3, facility_id: 1, user_id: 1, booking_date: "2017-03-22",  start_at: "21:00:00")
