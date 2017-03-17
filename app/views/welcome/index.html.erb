@@ -41,13 +41,13 @@
                         <%=image_tag(event.at_css(".js-poster-image").attr('src'), class:'img-responsive', style: 'min-width:100%')%>
                         <div class="overlay">
                             <div class="buttons">
-                                <a target="_blank" href="<%=event.css('a')[0][" href"]%>">Details</a>
+                                <a target="_blank" href="<%=event.css('a')[0]['href']%>">Details</a>
                             </div>
                         </div>
                     </div>
                     <figcaption>
                         <h4>
-                            <a href="<%=event.css('a')[0][" href"]%>" target="_blank"><%=event.at_css("div.list-card__title").text.strip%></a>
+                            <a href="<%=event.css('a')[0]['href']%>" target="_blank"><%=event.at_css("div.list-card__title").text.strip%></a>
 
                         </a>
                     </h4>
