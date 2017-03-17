@@ -11,10 +11,10 @@ User.create(email: 'hsquek06@gmail.com', name: 'wdi', password: '123456', block:
 User.create(email: 'skeerti2@gmail.com', name: 'wdi-sg', password: '123456', block: 345, unit: '34-56', an_admin: FALSE)
 User.create(email: 'johnacsyen@gmail.com', name: 'wdi-8', password: '123456', block: 123, unit: '56-78', an_admin: FALSE)
 
-FacilityType.create(name: 'BBQ', quota: 1, capacity: 4, session_length: 6, opens_at: "16:00:00", closes_at: "22:00:00")
-FacilityType.create(name: 'Tennis', quota: 2, capacity: 2, session_length: 2, opens_at: "08:00:00", closes_at: "22:00:00")
+FacilityType.create(name: 'BBQ Pit', quota: 1, capacity: 4, session_length: 6, opens_at: "16:00:00", closes_at: "22:00:00")
+FacilityType.create(name: 'Tennis Court', quota: 2, capacity: 2, session_length: 2, opens_at: "08:00:00", closes_at: "22:00:00")
 FacilityType.create(name: 'Function Room', quota: 1, capacity: 1, session_length: 6, opens_at: "16:00:00", closes_at: "22:00:00")
-FacilityType.create(name: 'Home', quota: 50, capacity: 50, session_length: 1, opens_at: "00:00:00", closes_at: "23:59:59")
+FacilityType.create(name: 'Guest Access', quota: 50, capacity: 50, session_length: 1, opens_at: "00:00:00", closes_at: "23:59:59")
 #
 4.times do |n|
   Facility.create(facility_type_id: 1, number: n+1)

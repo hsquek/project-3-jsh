@@ -1088,6 +1088,9 @@ article {
 .nav .open > a:focus {
   background-color: transparent;
 }
+.nocorner {
+  border-radius: 0px!important;
+}
 #top-bar .dropdown-menu > ul > li > a {
   display: block;
   font-size: 13px;

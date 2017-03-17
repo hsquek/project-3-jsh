@@ -4,7 +4,7 @@
 <% @facilities.each do |fac| %>
 
 <% if @fac_type.id != 4 %>
-<h3><%= @fac_type.name + " " + fac.number.to_s %></h3>
+<h4><%= @fac_type.name + " " + fac.number.to_s %></h4>
 
     <div style="display:inline-flex; flex-wrap:wrap;">
 
@@ -24,9 +24,9 @@
               <%= hidden_field(:booking, :start_at, :value => timestamp) %>
 
               <% if Booking.exists?(start_at: timestamp, booking_date: params[:booking_date], facility_id: fac.id) %>
-              <%= f.submit timestamp, :disabled => true %>
+              <%= f.submit timestamp[0..4], :disabled => true, class: 'btn btn-demo' , style: 'margin: 3px 0; border-radius:0px; padding:3px 12px;'%>
               <% else %>
-              <%= f.submit timestamp, class: 'btn-submit'%>
+              <%= f.submit timestamp[0..4], class: 'btn btn-success', style: 'margin: 3px 0; border-radius:0px; padding:3px 12px;'%>
               <% end %>
 
             <% end %>
@@ -34,14 +34,13 @@
       <% end %>
 
       <% else %>
-        <h3>Invite guests</h3>
         <%= form_for @booking, remote: true do |f| %>
         <%= hidden_field(:booking, :facility_type_id, :value => params[:facility_type_id]) %>
         <%= hidden_field(:booking, :user_id, :value => current_user.id) %>
         <%= hidden_field(:booking, :booking_date, :value => params[:booking_date]) %>
         <%= hidden_field(:booking, :facility_id, :value => fac.id) %>
         <%= hidden_field(:booking, :start_at, :value => @fac_type.opens_at) %>
-        <%= f.submit 'Invite' %>
+        <%= f.submit 'Get invite', class: 'btn btn-success' , style: 'margin: 3px 0; border-radius:0px; padding:3px 12px;' %>
         <% end %>
 
       <% end %>

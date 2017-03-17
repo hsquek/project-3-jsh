@@ -28,14 +28,14 @@
     <section id="happenings" class="works">
         <div class="container">
             <div class="section-heading">
-                <h1 class="title wow fadeInDown" data-wow-delay=".3s">Happenings around your apartment</h1>
+                <h1 class="title wow fadeInDown" data-wow-delay=".3s">Happening around you</h1>
             </div>
             <div class="row" style="display:flex; flex-wrap:wrap;">
-              <% @events[0..10].each do |event|%>
+              <% @events[0...6].each do |event|%>
               <div class="col-sm-4 col-xs-12">
-                  <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+                  <figure class="wow fadeInLeft animated portfolio-item" style="align-items:stretch;" data-wow-duration="500ms" data-wow-delay="0ms">
                       <div class="img-wrapper">
-                        <%=image_tag(event.at_css(".js-poster-image").attr('src'), class:'img-responsive')%>
+                        <%=image_tag(event.at_css(".js-poster-image").attr('src'), class:'img-responsive', style: 'min-width:100%')%>
                           <div class="overlay">
                               <div class="buttons">
                                   <a target="_blank" href="<%=event.css('a')[0]["href"]%>">Details</a>
@@ -56,5 +56,6 @@
               </div>
               <%end%>
             </div>
+            <h5>Source: https://www.eventbrite.com</h5>
         </div>
     </section> <!-- #works -->
