@@ -1,64 +1,74 @@
-# Your Project Name
+# cams
 
-Fuss-free facility booking and guest entry, this app aims to provide to residents of private apartments.
+This app aims to provide to residents of private apartments fuss-free facility booking and guest entry.
 
 ## Getting Started
 
-Access the app [here](https://floating-ravine-65207.herokuapp.com/)
-
-### Prerequisites
-
-What is needed to install and run the project, how do we install them
+Clone and bundle install.
+On the CLI, run
 
 ```
-Code example
+rails db:setup
 ```
+
+### Dependencies
+
+* Ruby
+* NodeMCU microcontroller (used with the MQTT gem)
+* Any QR code reader/decoder
+
 
 ### How to Use
 
-A step by step guide on how to install and use the project, for example if this is a game, how do we play it.
+Log in with test123@test123.com, password: 123456 (non-administrator account).
 
-
-```
-Code example
-```
-
-More steps...
-
-```
-until finished
-```
+Create bookings for various facility types, or generate a qr code to grant gate access to your guests. The qr code is sent to your personal email account, which you can then forward to your guests. Present it at the gate to open.
 
 
 ## Tests
 
-Did you write automated tests? If so, how do we run them.
+Pending.
 
-
-```
-Code example
-```
 
 ## Live Version
 
-Where is this deployed online (github pages, heroku etc), give us the link and any access details we need.
+Find our app on Heroku [here](https://floating-ravine-65207.herokuapp.com/)
 
 ## Built With
 
 What did you use to build it, list the technologies, plugins, gems, packages etc.
-
-* [jQuery](http://jquery.com/) - jQuery for example is something you likely used
+* [Ruby on Rails](https://rubyonrails.org/)
+* [jQuery](http://jquery.com/)
+* Please refer to our Gemfile for gems used.
 
 ## Workflow
 
-Did you write user stories, draw wireframes, use task tracking, produce ERDs? Did you use source control, with regular commits? Include links to them here.
+#### ERD
 
-## Authors
+![Imgur](http://i.imgur.com/btfHVrX.png)
 
-Did you collaborate with others on this project, list them here
+#### wireframes
 
-* **John McClain** - *Responsible for keeping vests white* - [GithubUserName](https://github.com/GithubUserName)
+Homepage without login
+
+![Imgur](http://i.imgur.com/3m6CXfJ.png)
+
+Homepage after login
+
+![Imgur](http://i.imgur.com/nzlveiT.png)
+
+Booking page (making a Booking)
+
+![Imgur](http://i.imgur.com/uAMjrlD.png)
+
+Booking page (after Booking)
+
+![Imgur](http://i.imgur.com/55r0K14.png)
+
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used, for example [this was a useful starting point for creating this template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).
+* [Marine Parade CC's website](https://www.eventbrite.sg/d/marine-parade/events/?crt=regular&sort=best)
+* Prima
+* Jeremiah
+* Kang Sheng
