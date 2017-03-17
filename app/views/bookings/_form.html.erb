@@ -24,9 +24,9 @@
               <%= hidden_field(:booking, :start_at, :value => timestamp) %>
 
               <% if Booking.exists?(start_at: timestamp, booking_date: params[:booking_date], facility_id: fac.id) %>
-              <%= f.submit timestamp[0..4], :disabled => true, class: 'btn btn-demo' , style: 'margin: 3px 0; border-radius:0px; padding:3px 12px;'%>
+                <%= f.submit timestamp[0..4], :disabled => true, class: 'btn btn-demo' , style: 'margin: 3px 0; border-radius:0px; padding:3px 12px;'%>
               <% else %>
-              <%= f.submit timestamp[0..4], class: 'btn btn-success', style: 'margin: 3px 0; border-radius:0px; padding:3px 12px;'%>
+                <%= f.submit timestamp[0..4], class: 'btn btn-success', style: 'margin: 3px 0; border-radius:0px; padding:3px 12px;'%>
               <% end %>
 
             <% end %>

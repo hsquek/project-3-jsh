@@ -10,12 +10,14 @@ User.create(email: 'admin@admin.com', name: 'admin', password: 'test123', block:
 User.create(email: 'hsquek06@gmail.com', name: 'wdi', password: '123456', block: 123, unit: '12-34', an_admin: FALSE)
 User.create(email: 'skeerti2@gmail.com', name: 'wdi-sg', password: '123456', block: 345, unit: '34-56', an_admin: FALSE)
 User.create(email: 'johnacsyen@gmail.com', name: 'wdi-8', password: '123456', block: 123, unit: '56-78', an_admin: FALSE)
+User.create(email: 'test123@test123.com', name: 'guest', password: '123456', block: 678, unit: '12-34', an_admin: FALSE)
 
 FacilityType.create(name: 'BBQ Pit', quota: 1, capacity: 4, session_length: 6, opens_at: "16:00:00", closes_at: "22:00:00")
 FacilityType.create(name: 'Tennis Court', quota: 2, capacity: 2, session_length: 2, opens_at: "08:00:00", closes_at: "22:00:00")
 FacilityType.create(name: 'Function Room', quota: 1, capacity: 1, session_length: 6, opens_at: "16:00:00", closes_at: "22:00:00")
 FacilityType.create(name: 'Guest Access', quota: 50, capacity: 50, session_length: 1, opens_at: "00:00:00", closes_at: "23:59:59")
-#
+
+
 4.times do |n|
   Facility.create(facility_type_id: 1, number: n+1)
 end
@@ -24,16 +26,15 @@ end
 end
 Facility.create(facility_type_id: 3, number: 1)
 Facility.create(facility_type_id: 4, number: 1)
-#
-# d = DateTime.new(2017,3,10,4,0,0)
-Booking.create(facility_type_id: 1, facility_id: 1, user_id: 1, booking_date: "2017-03-17",  start_at: "16:00:00")
+
+Booking.create(facility_type_id: 1, facility_id: 1, user_id: 4, booking_date: "2017-03-17",  start_at: "16:00:00")
 
 Booking.create(facility_type_id: 1, facility_id: 1, user_id: 2, booking_date: "2017-03-18",  start_at: "16:00:00")
 
-Booking.create(facility_type_id: 2, facility_id: 1, user_id: 2, booking_date: "2017-03-19",  start_at: "16:00:00")
+Booking.create(facility_type_id: 2, facility_id: 1, user_id: 4, booking_date: "2017-03-19",  start_at: "16:00:00")
 
-Booking.create(facility_type_id: 2, facility_id: 2, user_id: 3, booking_date: "2017-03-20",  start_at: "07:00:00")
+Booking.create(facility_type_id: 2, facility_id: 2, user_id: 1, booking_date: "2017-03-20",  start_at: "08:00:00")
 
 Booking.create(facility_type_id: 1, facility_id: 3, user_id: 3, booking_date: "2017-03-21",  start_at: "16:00:00")
 
-Booking.create(facility_type_id: 3, facility_id: 1, user_id: 1, booking_date: "2017-03-22",  start_at: "21:00:00")
+Booking.create(facility_type_id: 3, facility_id: 1, user_id: 4, booking_date: "2017-03-22",  start_at: "16:00:00")

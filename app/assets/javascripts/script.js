@@ -29,7 +29,7 @@ $(document).on('click', '.fac-types', function (e) {
 })
 
 // hide form and reset calendar indicator on form submit
-$(document).on('click', '.btn-submit', function (e) {
+$(document).on('click', '.btn-success', function (e) {
   $('#booking-form').hide()
   $('.day').css({'background-color': ''})
 })

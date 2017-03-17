@@ -1,6 +1,6 @@
 <%=form_for [@complaint, Comment.new], { class: "form-group", remote: true } do |f|%>
   <div class="col-md-6">
     <%= f.text_area :text, class:"form-control", placeholder: "Add a comment" %>
-    <%= f.submit 'Submit'%>
+    <%= f.submit 'Submit', class: "btn btn-primary", style: 'margin: 3px 0; border-radius:0px; padding:3px 12px;'%>
   </div>
 <%end%>
