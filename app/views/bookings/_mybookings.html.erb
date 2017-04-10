@@ -6,9 +6,11 @@
     <% if booking.booking_date >= Date.today %>
       <h4>
         <%= FacilityType.find(Booking.find(booking.id).facility_type_id).name.to_s + " " + Facility.find(Booking.find(booking.id).facility_id).number.to_s %>
-        <%= link_to '', booking, method: :delete, class: 'fa fa-trash-o', remote: true%>
-        <%= link_to '', sendqr_path(:qr_code => booking.qr_code), class: 'fa fa-qrcode'%>
       </h4>
+      <h3>
+      <%= link_to '', booking, method: :delete, class: 'fa fa-trash-o', remote: true%>
+      <%= link_to '', sendqr_path(:qr_code => booking.qr_code), class: 'fa fa-qrcode'%>
+    </h3>
       <p><strong>Time:</strong> <%= "#{booking.start_at.strftime("%H:%M")} - #{(booking.start_at + FacilityType.find(Booking.find(booking.id).facility_type_id).session_length.hours).strftime("%H:%M")}" %></p>
       <p><strong>Date:</strong> <%= booking.booking_date.strftime("%Y-%m-%d") %></p>
       <hr>
