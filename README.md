@@ -1,4 +1,4 @@
-# cams
+# Condo Management System (CMS)
 
 This app aims to provide to residents of private apartments fuss-free facility booking and guest entry.
 
